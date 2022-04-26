@@ -1,22 +1,13 @@
-<template>
-  <div ref="container"></div>
-</template>
-
-<script>
+import Vue from 'vue'
 import * as THREE from 'three';
 import * as CANNON from 'cannon';
 import * as OrbitControls from 'three-orbitcontrols';
+import Component from 'vue-class-component'
 // import CannonDebugRenderer from 'cannon/tools/threejs/CannonDebugRenderer.js'
 
-export default {
-  name: 'canvas-3d',
-  props: {
-  },
-  data(){
-    return {
-      text: ''
-    }
-  },
+@Component()
+export class Canvas3d extends Vue {
+
   mounted(){
     let container = this.$refs.container
 
@@ -356,9 +347,10 @@ world.addEventListener('postStep', function() {
 
 init()
   }
+
+  render () {
+    return (
+      <div ref="container"></div>
+    )
+  }
 }
-</script>
-
-<style scoped>
-
-</style>
