@@ -11,6 +11,7 @@ import Component from 'vue-class-component'
 export default class App extends Vue {
   
   render(){
+    
     return (
       <div id="app">
         <Canvas-3d />
