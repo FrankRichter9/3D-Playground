@@ -9,7 +9,5 @@ export function initRenderer(container){
     container.appendChild( renderer.domElement );
     renderer.shadowMap.enabled = true;
 
-    console.log(container.clientHeight)
-
     return renderer
 }

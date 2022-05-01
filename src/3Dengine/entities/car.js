@@ -5,7 +5,7 @@ export function createCar(scene, world) {
     const vehicleShape = new CANNON.Box(new CANNON.Vec3(1, 0.3, 2));
     const vehicleBody = new CANNON.Body({mass: 150});
     vehicleBody.addShape(vehicleShape);
-    vehicleBody.position.set(0, 0.2, 0);
+    vehicleBody.position.set(0, 0.2, -10);
     vehicleBody.angularVelocity.set(0, 0, 0); // initial velocity
   
     // car visual body

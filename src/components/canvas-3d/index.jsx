@@ -14,6 +14,7 @@ export class Canvas3d extends Vue {
   render () {
     return (
       <div ref="container" style={{
+        width: '1000px',
         height: '800px'
       }}></div>
     )

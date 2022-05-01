@@ -20,7 +20,7 @@ export function init3DRenderer(container) {
   const {
     camera,
     controls
-  } = initCamera(renderer)
+  } = initCamera(renderer, container)
 
   initLight(scene)
 
@@ -34,12 +34,17 @@ export function init3DRenderer(container) {
     walls: [
       {
         size: [20, 5, 0.5],
-        position: [0, 0, 10],
+        position: [0, 2.5, 0],
         mass: 0
       },
       {
-        size: [10, 5, 0.5],
-        position: [10, 0, 20],
+        size: [0.5, 5, 20],
+        position: [10, 2.5, 0],
+        mass: 0
+      },
+      {
+        size: [0.5, 5, 20],
+        position: [-10, 2.5, 0],
         mass: 0
       },
     ]
