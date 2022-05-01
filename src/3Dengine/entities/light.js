@@ -23,7 +23,7 @@ export function initLight(scene) {
 
 
     const light1 = new THREE.DirectionalLight( 0xFFFFFF, 0.3 ); // soft white light
-    light1.castShadow = true
+    // light1.castShadow = true
     scene.add( light1 )
 
     light1.shadow.camera.left = - d;
