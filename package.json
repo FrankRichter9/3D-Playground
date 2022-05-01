@@ -8,6 +8,7 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@vue/cli": "^5.0.4",
     "cannon": "^0.6.2",
     "core-js": "^3.8.3",
     "lesca-cannon-debug-renderer": "^1.0.8",
