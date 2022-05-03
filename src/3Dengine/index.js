@@ -47,7 +47,30 @@ export function init3DRenderer(container) {
         position: [-10, 2, 0],
         mass: 0
       },
-    ]
+      {
+        size: [0.5, 5, 50],
+        position: [-25, 2, 0],
+        mass: 0
+      },
+      {
+        size: [0.5, 5, 50],
+        position: [25, 2, 0],
+        mass: 0
+      },
+      {
+        size: [50, 5, 0.5],
+        position: [0, 2, 25],
+        mass: 0
+      },
+      {
+        size: [50, 5, 0.5],
+        position: [0, 2, -25],
+        mass: 0
+      },
+    ],
+    endPoint :{
+      position: [0, 0, 15]
+    }
   }
 
   createMap(scene, world, MAP)
@@ -65,7 +88,7 @@ export function init3DRenderer(container) {
     vehicleMesh
   } = createCar(scene, world)
   
-  runEngineLoop(scene, camera, renderer, world, controls, vehicleMesh, vehicleBody, vehicle)
+  runEngineLoop(scene, camera, renderer, world, controls, vehicleMesh, vehicleBody, vehicle, MAP.endPoint)
   
   initButtonControls(vehicle)
       

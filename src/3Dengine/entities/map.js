@@ -28,5 +28,18 @@ export function createMap(scene, world, MAP) {
         });
     }
 
+    if(MAP.endPoint){
+        const END_POINT = MAP.endPoint
+
+        const geometryEndPoint = new THREE.BoxGeometry(8, 5, 8);
+        const materialEndPoint = new THREE.MeshPhongMaterial( { color: 0x00ff00 } );
+        materialEndPoint.transparent  = true
+        materialEndPoint.opacity = 0.4
+        let wallMesh = new THREE.Mesh( geometryEndPoint, materialEndPoint );
+        
+        wallMesh.position.set(...END_POINT.position)
+        scene.add( wallMesh );
+    }
+
     
 }

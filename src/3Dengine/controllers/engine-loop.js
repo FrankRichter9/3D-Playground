@@ -1,4 +1,16 @@
-export function runEngineLoop(scene, camera, renderer, world, controls, vehicleMesh, vehicleBody) {
+let END_GAME = false
+
+export function runEngineLoop(
+        scene,
+        camera,
+        renderer,
+        world,
+        controls,
+        vehicleMesh,
+        vehicleBody,
+        vehicle,
+        endPoint
+    ) {
     animate()
 
     function animate() {
@@ -11,6 +23,19 @@ export function runEngineLoop(scene, camera, renderer, world, controls, vehicleM
         // update the chassis position
         vehicleMesh.position.copy(vehicleBody.position);
         vehicleMesh.quaternion.copy(vehicleBody.quaternion);
+
+        const END_POINT_X = endPoint.position[0]
+        const END_POINT_Z = endPoint.position[2]
+        const VEHICLE_POSITION = vehicle.chassisBody.position
+
+        if(
+            Math.abs(VEHICLE_POSITION.x - END_POINT_X) < 1
+            && Math.abs(VEHICLE_POSITION.z - END_POINT_Z) < 1
+            && !END_GAME
+        ){
+            END_GAME = true
+            alert('Карта пройдена!')
+        }
     
         //camera 
     
