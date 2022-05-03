@@ -34,17 +34,17 @@ export function init3DRenderer(container) {
     walls: [
       {
         size: [20, 5, 0.5],
-        position: [0, 2.5, 0],
+        position: [0, 2, 0],
         mass: 0
       },
       {
         size: [0.5, 5, 20],
-        position: [10, 2.5, 0],
+        position: [10, 2, 0],
         mass: 0
       },
       {
         size: [0.5, 5, 20],
-        position: [-10, 2.5, 0],
+        position: [-10, 2, 0],
         mass: 0
       },
     ]
@@ -65,7 +65,7 @@ export function init3DRenderer(container) {
     vehicleMesh
   } = createCar(scene, world)
   
-  runEngineLoop(scene, camera, renderer, world, controls, vehicleMesh, vehicleBody)
+  runEngineLoop(scene, camera, renderer, world, controls, vehicleMesh, vehicleBody, vehicle)
   
   initButtonControls(vehicle)
       

@@ -5,6 +5,7 @@ export function createArea(scene, world) {
     const geometry = new THREE.BoxGeometry(50, 0.3, 50);
     const material = new THREE.MeshPhongMaterial( { color: 0xffffff } );
     let cube = new THREE.Mesh( geometry, material );
+    cube.position.y = -0.6
     cube.receiveShadow = true;
     scene.add( cube );
     

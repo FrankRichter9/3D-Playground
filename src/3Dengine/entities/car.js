@@ -1,11 +1,12 @@
 import * as THREE from 'three';
 import * as CANNON from 'cannon';
+import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader.js';
 
 export function createCar(scene, world) {
     const vehicleShape = new CANNON.Box(new CANNON.Vec3(1, 0.3, 2));
     const vehicleBody = new CANNON.Body({mass: 150});
     vehicleBody.addShape(vehicleShape);
-    vehicleBody.position.set(0, 0.2, -10);
+    vehicleBody.position.set(0, 0.9, -10);
     vehicleBody.angularVelocity.set(0, 0, 0); // initial velocity
   
     // car visual body
@@ -14,6 +15,10 @@ export function createCar(scene, world) {
     const vehicleMesh = new THREE.Mesh(vehicleGeometry, vehicleMaterial);
     vehicleMesh.castShadow = true;
     scene.add(vehicleMesh);
+
+    const LOADING_MANAGER = new THREE.LoadingManager();
+    const OBJ_LOADER = new OBJLoader(LOADING_MANAGER);
+
   
     // parent vehicle object
     const vehicle = new CANNON.RaycastVehicle({
@@ -25,7 +30,7 @@ export function createCar(scene, world) {
   
     // wheel options
     const options = {
-        radius: 0.3,
+        radius: 0.0001,
         directionLocal: new CANNON.Vec3(0, -1, 0),
         suspensionStiffness: 45,
         suspensionRestLength: 0.4,
@@ -42,16 +47,17 @@ export function createCar(scene, world) {
     };
   
     const axlewidth = 1;
-    options.chassisConnectionPointLocal.set(axlewidth, 0, -1);
+    const top = 0
+    options.chassisConnectionPointLocal.set(axlewidth, top, -1);
     vehicle.addWheel(options);
     
-    options.chassisConnectionPointLocal.set(-axlewidth, 0, -1);
+    options.chassisConnectionPointLocal.set(-axlewidth - 0.35, top, -1);
     vehicle.addWheel(options);
     
-    options.chassisConnectionPointLocal.set(axlewidth, 0, 1);
+    options.chassisConnectionPointLocal.set(axlewidth, top, 1);
     vehicle.addWheel(options);
     
-    options.chassisConnectionPointLocal.set(-axlewidth, 0, 1);
+    options.chassisConnectionPointLocal.set(-axlewidth - 0.3, top, 1);
     vehicle.addWheel(options);
     
     vehicle.addToWorld(world);
@@ -70,14 +76,23 @@ export function createCar(scene, world) {
         // wheel visual body
         const geometry12 = new THREE.CylinderGeometry( wheel.radius, wheel.radius, 0.4, 32 );
         const material = new THREE.MeshPhongMaterial({
-        color: 0xd0901d,
-        emissive: 0xaa0000,
-        side: THREE.DoubleSide,
-        flatShading: true,
+          color: 0xd0901d,
+          emissive: 0xaa0000,
+          side: THREE.DoubleSide,
+          flatShading: true,
         });
         const cylinder = new THREE.Mesh(geometry12, material);
         cylinder.castShadow = true;
         cylinder.geometry.rotateZ(Math.PI/2);
+
+        OBJ_LOADER.load('./wheel.obj', (object) => {
+          object.scale.x = 0.5;
+          object.scale.y = 0.5;
+          object.scale.z = 0.5;
+          object.rotation.z = -Math.PI / 2;
+
+          cylinder.add(object)
+        });
         
         wheelVisuals.push(cylinder);
         scene.add(cylinder);

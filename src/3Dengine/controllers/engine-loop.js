@@ -25,6 +25,8 @@ export function runEngineLoop(scene, camera, renderer, world, controls, vehicleM
         // cannonDebugRenderer.update(); // Update - CannonDebugRenderer
     
         //Конец всё что связанно с cannon js
+
+        
     
         // stats.begin()
         renderer.render( scene, camera );

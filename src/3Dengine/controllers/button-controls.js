@@ -6,10 +6,12 @@ export function initButtonControls(vehicle) {
 function navigate(e, vehicle) {
     if (e.type != 'keydown' && e.type != 'keyup') return;
     var keyup = e.type == 'keyup';
-    vehicle.setBrake(0, 0);
-    vehicle.setBrake(0, 1);
-    vehicle.setBrake(0, 2);
-    vehicle.setBrake(0, 3);
+
+    const s = 0
+    vehicle.setBrake(s, 0);
+    vehicle.setBrake(s, 1);
+    vehicle.setBrake(s, 2);
+    vehicle.setBrake(s, 3);
   
     var engineForce = 200,
         maxSteerVal = 0.6;
