@@ -6,7 +6,7 @@ export function runEngineLoop(scene, camera, renderer, world, controls, vehicleM
         controls.update();
         // stats.update()
     
-        //Всё что связанно с cannon jswwwww
+        //Всё что связанно с cannon js
         world.step(1 / 60)
         // update the chassis position
         vehicleMesh.position.copy(vehicleBody.position);
